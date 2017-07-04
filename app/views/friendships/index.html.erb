@@ -8,6 +8,7 @@
           <th>Username</th>
           <th>Email</th>
           <th>会话</th>
+          <th>未读消息</th>
           <th>管理</th>
         </tr>
       </thead>
@@ -17,6 +18,7 @@
             <td><%= friend.username %></td>
             <td><%= friend.email%></td>
             <td><%= link_to '聊天页面', conversations_path(:sender_id => current_user.id, :recipient_id => friend.id), method: :post %></td>
+            <td><%= friend.email%></td>
             <td><%= link_to '删除联系人', friendships_path(friend), method: :delete, data: {confirm: "你确定删除吗？"} %></td>
           </tr>
         <% end %>
