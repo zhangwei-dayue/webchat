@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
   validates :username, :presence => true, :uniqueness => { :case_sensitive => false }
-  has_many :friends
   has_many :friendships
+  has_many :users_friend, :through => :friendships, :source => :friend
 
   def login=(login)
     @login = login

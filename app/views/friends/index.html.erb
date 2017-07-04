@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col col-md-3 col-offset-1">
+    <h3 class="text-left">我的好友列表</h3>
+    <hr>
+    <table class="table table-border">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @friends.each do |friend| %>
+          <tr>
+            <td>friend.user.username</td>
+            <td>friend.user.email</td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
