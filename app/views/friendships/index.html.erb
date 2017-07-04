@@ -12,8 +12,9 @@
       <tbody>
         <% @friends.each do |friend| %>
           <tr>
-            <td><%= friend.username%></td>
+            <td><%= friend.username %></td>
             <td><%= friend.email%></td>
+            <td><%= link_to '聊天页面', conversations_path(:sender_id => current_user.id, :recipient_id => friend.id), method: :post %></td>
           </tr>
         <% end %>
       </tbody>
