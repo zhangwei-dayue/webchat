@@ -6,7 +6,7 @@ class User < ApplicationRecord
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
   validates :username, :presence => true, :uniqueness => { :case_sensitive => false }
   has_many :friendships
-  has_many :users_friend, :through => :friendships, :source => :friend
+  has_many :friends, :through => :friendships
 
   def login=(login)
     @login = login

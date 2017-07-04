@@ -8,10 +8,10 @@ class FriendshipsController < ApplicationController
   def create
     @friendship = current_user.friendships.build(:friend_id => params[:friend_id])
     if @friendship.save
-      flash[:notice] = "Added friend."
+      flash[:notice] = "添加联系人成功"
       redirect_to root_url
     else
-      flash[:error] = "Unable to add friend."
+      flash[:error] = "不能添加联系人"
       redirect_to root_url
     end
   end
