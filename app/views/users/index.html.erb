@@ -1,6 +1,31 @@
-<% @users.each do |user| %>
-<%= user.username %>
-<%= user.email %>
-<%= link_to "添加联系人", friendships_path(:friend_id => user), :method => :post, class: 'btn btn-primary' %>
-<br>
-<% end %>
+<div class="panel panel-default">
+  <div class="panel-heading">Total Users</div>
+  <div class="panel-body">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Add</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+        <tr>
+          <% unless current_user == user %>
+            <td><%= user.username %></td>
+            <td><%= user.email %></td>
+            <td>
+            <% if !current_user.friends.include?(user) %>
+              <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
+            <% else %>
+              Your friend!
+            <% end %>  
+            </td>
+          <% end %>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
