@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
   has_many :conversations, :foreign_key => :sender_id
 
+  sync :all
+
   def unread(user, friend)
     converstaion = Conversation.between(user.id, friend.id).first
     if !converstaion.nil?

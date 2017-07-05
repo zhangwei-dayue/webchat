@@ -30,14 +30,17 @@ class MessagesController < ApplicationController
   def create
     @message = @conversation.messages.new(message_params)
     if @message.save
-      redirect_to conversation_messages_path(@conversation)
+      sync_new @message
     end
+    redirect_to :back
   end
 
   def destroy
     @message = @conversation.messages.find(params[:id])
     @message.destroy
-    redirect_to conversation_messages_path(@conversation)
+    sync_destroy @message
+
+    redirect_to :back
   end
 
   private
