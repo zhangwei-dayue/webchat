@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :registrations => "users/registrations" }
   resources :friendships
   resources :users, only: [:index]
-  resources :conversations, only: [:create] do
+  resources :conversations, only: [:index, :create] do
     resources :messages do
       collection do
         post :view_all
