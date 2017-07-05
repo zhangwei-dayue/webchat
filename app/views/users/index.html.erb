@@ -4,9 +4,10 @@
     <table class="table table-hover">
       <thead>
         <tr>
-          <th>Name</th>
+          <th>Userame</th>
           <th>Email</th>
-          <th>Add</th>
+          <th>发送信息</th>
+          <th>添加好友</th>
         </tr>
       </thead>
       <tbody>
@@ -15,12 +16,13 @@
           <% unless current_user == user %>
             <td><%= user.username %></td>
             <td><%= user.email %></td>
+            <td><%= link_to "发送信息", conversations_path(:sender_id => current_user.id, :recipient_id => user.id), method: :post %></td>
             <td>
             <% if !current_user.friends.include?(user) %>
-              <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
+              <%= link_to "添加好友", friendships_path(:friend_id => user), :method => :post %>
             <% else %>
               Your friend!
-            <% end %>  
+            <% end %>
             </td>
           <% end %>
         </tr>
