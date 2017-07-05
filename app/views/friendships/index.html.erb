@@ -17,9 +17,9 @@
           <tr>
             <td><%= friend.username %></td>
             <td><%= friend.email%></td>
-            <td><%= link_to '聊天页面', conversations_path(:sender_id => current_user.id, :recipient_id => friend.id), method: :post %></td>
-            <td><%= friend.email%></td>
-            <td><%= link_to '删除联系人', friendships_path(friend), method: :delete, data: {confirm: "你确定删除吗？"} %></td>
+            <td><%= link_to '聊天页面', conversations_path(:sender_id => current_user.id, :recipient_id => friend.id), method: :post, class: 'btn btn-primary' %></td>
+            <td><%= friend.unread(current_user, friend) %></td>
+            <td><%= link_to '删除联系人', friendship_path(friend), method: :delete, data: {confirm: "你确定删除吗？"}, class: 'btn btn-danger' %></td>
           </tr>
         <% end %>
       </tbody>

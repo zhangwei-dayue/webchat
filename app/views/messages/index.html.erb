@@ -13,7 +13,9 @@
             <div class="item">
               <i class="right triangle icon"></i>
               <%= message.body %>
-              | <%= link_to '删除信息', conversation_messages_path(message.conversation, message), method: :delete%>
+                <% unless current_user == user %>
+                  | <%= link_to '删除信息', conversation_message_path(message.conversation, message), method: :delete%>
+                <% end %>
             </div>
           </div>
         </div>
